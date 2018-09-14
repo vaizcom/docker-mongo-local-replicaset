@@ -8,13 +8,6 @@ Sometimes you need a replica set in your local environment (perhaps you want to 
 
 You need to know the following:
 
-#### LOGIN INFO
-
-User info is configured on the admin database:
-
-  - username: `dev`
-  - password: `dev`
-
 #### PORTS
 Each instance exposes a port, all listening on 0.0.0.0 interface:
 
@@ -38,8 +31,8 @@ If you mount something into `/data/db1`, the container will not go through it's 
 
 ### Example Run
 
-    docker run -d -p 27001:27001 -p 27002:27002 -p 27003:27003 --name mongo -v /data/mongodb:/data -e "REPLICA_SET_NAME=mongo-rs" -e "USERNAME=dev" -e "PASSWORD=dev" --restart=always luamas/docker-mongo-local-replicaset
+    docker run -d -p 27001:27001 -p 27002:27002 -p 27003:27003 --name mongo -v /data/mongodb:/data -e "REPLICA_SET_NAME=mongo-rs" --restart=always flqw/docker-mongo-local-replicaset
 
 ### Example Mongo Connection String (from another container)
 
-    mongodb://dev:dev@mongo:27001,mongo:27002,mongo:27003/db?authSource=admin
+    mongodb://dev:dev@mongo:27001,mongo:27002,mongo:27003/db
