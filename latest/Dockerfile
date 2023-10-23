@@ -1,4 +1,4 @@
-FROM mongo:5.0.6
+FROM mongo:7.0.2
 
 VOLUME /data
 EXPOSE 27001 27002 27003
