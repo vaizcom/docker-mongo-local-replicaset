@@ -38,7 +38,7 @@ waitForMongo 27003
 
 echo "CONFIGURING REPLICA SET"
 CONFIG="{ _id: '$REPLICA_SET_NAME', members: [{_id: 0, host: 'localhost:27001', priority: 2 }, { _id: 1, host: 'localhost:27002' }, { _id: 2, host: 'localhost:27003' } ]}"
-mongosh admin --port 27001 --eval "db.runCommand({ replSetInitiate: $CONFIG })"
+mongosh admin --port 27001 --eval "db.runCommand({ replSetReconfig: $CONFIG, force:true })"
 
 waitForMongo 27002
 waitForMongo 27003
